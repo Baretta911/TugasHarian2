@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BASE_URL } from "./utils";
+import { BASE_URL } from "../utils";
 
 function AddNote({ addNote }) {
     const [title, setTitle] = useState("");
