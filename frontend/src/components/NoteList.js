@@ -1,5 +1,5 @@
 import React from "react";
-import { BASE_URL } from "./utils";
+import { BASE_URL } from "../utils";
 
 function NoteList({ notes, setNotes }) {
     const editNote = async (id, newTitle, newContent) => {
