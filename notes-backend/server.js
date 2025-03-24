@@ -18,8 +18,11 @@ app.use('/notes', notesRoutes);
 sequelize.sync()
     .then(() => {
         console.log('Database & tabel berhasil disinkronisasi');
-        app.listen(5000, () => {
-            console.log('Server berjalan di http://localhost:5000');
+        const PORT = process.env.PORT || 8080; // Pastikan ini menggunakan 8080
+        app.listen(PORT, () => {
+            console.log(`Server berjalan di http://localhost:${PORT}`);
         });
     })
-    .catch(err => console.error('Gagal sinkronisasi database:', err));
+    .catch(err => {
+        console.error('Gagal sinkronisasi database:', err);
+    });
