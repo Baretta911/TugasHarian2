@@ -4,7 +4,7 @@ import AddNote from "./components/AddNote";
 import axios from "axios";
 import "./styles.css";
 
-const API_URL = "http://localhost:5000/notes"; // Sesuaikan dengan backend
+const API_URL = `${BASE_URL}/notes`;
 
 function App() {
     const [notes, setNotes] = useState([]);
