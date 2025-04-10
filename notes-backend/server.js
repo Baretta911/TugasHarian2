@@ -20,7 +20,7 @@ sequelize.sync()
   .then(() => {
     console.log('✅ Database & tabel berhasil disinkronisasi');
 
-    const PORT = process.env.PORT;
+    const PORT = process.env.PORT || 8080;
 
     if (!PORT) {
       throw new Error("❌ Environment variable PORT tidak ditemukan. Cloud Run memerlukan PORT.");
