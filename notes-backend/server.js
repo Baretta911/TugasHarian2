@@ -20,7 +20,7 @@ sequelize.sync()
   .then(() => {
     console.log('Database & tabel berhasil disinkronisasi');
 
-    const PORT = process.env.PORT || 8080; // Cloud Run biasanya pakai PORT env
+    const PORT = process.env.PORT || 5000; // Cloud Run biasanya pakai PORT env
     app.listen(PORT, () => {
       console.log(`Server berjalan di port ${PORT}`);
     });
