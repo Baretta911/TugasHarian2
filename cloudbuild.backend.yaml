@@ -36,6 +36,8 @@ steps:
         "gcr.io/$PROJECT_ID/be-baretta",
         "--timeout",
         "1000s",
+        "--port",
+        "8080",
         "--region",
         "us-central1",
         "--allow-unauthenticated",
