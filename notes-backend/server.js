@@ -6,25 +6,30 @@ const notesRoutes = require('./routes/notesRoutes');
 const app = express();
 app.use(express.json());
 
-// Allow CORS from anywhere (or ganti dengan domain frontend kamu)
+// Konfigurasi CORS (sesuaikan origin dengan domain frontend kamu kalau perlu)
 app.use(cors({
   origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE"],
 }));
 
-// Gunakan route dari notesRoutes
+// Routing catatan
 app.use('/notes', notesRoutes);
 
-// Sinkronisasi database sebelum server berjalan
+// Sinkronisasi database dan jalankan server
 sequelize.sync()
   .then(() => {
-    console.log('Database & tabel berhasil disinkronisasi');
+    console.log('✅ Database & tabel berhasil disinkronisasi');
 
-    const PORT = process.env.PORT || 5000; // Cloud Run biasanya pakai PORT env
+    const PORT = process.env.PORT;
+
+    if (!PORT) {
+      throw new Error("❌ Environment variable PORT tidak ditemukan. Cloud Run memerlukan PORT.");
+    }
+
     app.listen(PORT, () => {
-      console.log(`Server berjalan di port ${PORT}`);
+      console.log(`🚀 Server berjalan di port ${PORT}`);
     });
   })
   .catch(err => {
-    console.error('Gagal sinkronisasi database:', err);
+    console.error('❌ Gagal sinkronisasi database:', err);
   });
