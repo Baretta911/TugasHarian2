@@ -18,7 +18,8 @@ steps:
         "1000s",
         "--region",
         "us-central1",
-        "--allow-unauthenticated",
+        "--allow-unauthenticated"
+        # --port tidak diperlukan karena Cloud Run otomatis pakai ENV PORT
       ]
 
 options:
