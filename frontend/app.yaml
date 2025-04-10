@@ -2,13 +2,12 @@ runtime: nodejs20
 service: default
 instance_class: F1
 
+env_variables:
+  DB_HOST: mysql-container
+  DB_USER: root
+  DB_PASSWORD: ""
+  DB_NAME: notes_db
+
 handlers:
-  - url: /
-    static_files: build/index.html
-    upload: build/index.html
-
-  - url: /(.*)
-    static_files: build/\1
-    upload: build/(.*)
-
-default_expiration: "1h"
+  - url: /.*
+    script: auto
