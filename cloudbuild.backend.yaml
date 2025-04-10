@@ -11,14 +11,14 @@ steps:
       [
         "run",
         "deploy",
-        "be-baretta",
+        "be",
         "--image",
         "gcr.io/$PROJECT_ID/be-baretta",
         "--timeout",
         "1000s",
         "--region",
         "us-central1",
-        "--allow-unauthenticated"
+        "--allow-unauthenticated",
       ]
 
 options:
