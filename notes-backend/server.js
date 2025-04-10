@@ -1,3 +1,5 @@
+require('dotenv').config(); // Wajib di paling atas
+
 const express = require('express');
 const cors = require('cors');
 const sequelize = require('./config/database');
@@ -15,7 +17,9 @@ app.use('/notes', notesRoutes);
 sequelize.sync()
   .then(() => {
     console.log('Database & tabel berhasil disinkronisasi');
-    const PORT = process.env.PORT || 8080;  // <--- ini WAJIB pakai ENV
+
+    // Cloud Run akan set PORT melalui ENV, jadi tidak perlu di-hardcode
+    const PORT = process.env.PORT || 8080;
     app.listen(PORT, () => {
       console.log(`Server berjalan di port ${PORT}`);
     });
