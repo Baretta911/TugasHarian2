@@ -6,21 +6,22 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/$PROJECT_ID/be-baretta"]
 
-  - name: "gcr.io/cloud-builders/gcloud"
-    args:
-      [
-        "run",
-        "deploy",
-        "be",
-        "--image",
-        "gcr.io/$PROJECT_ID/be-baretta",
-        "--timeout",
-        "1000s",
-        "--region",
-        "us-central1",
-        "--allow-unauthenticated"
-        # --port tidak diperlukan karena Cloud Run otomatis pakai ENV PORT
-      ]
+ - name: "gcr.io/cloud-builders/gcloud"
+  args:
+    [
+      "run",
+      "deploy",
+      "be",
+      "--image",
+      "gcr.io/$PROJECT_ID/be-baretta",
+      "--timeout",
+      "1000s",
+      "--region",
+      "us-central1",
+      "--allow-unauthenticated",
+      "--port",
+      "8080"
+    ]
 
 options:
   logging: CLOUD_LOGGING_ONLY
