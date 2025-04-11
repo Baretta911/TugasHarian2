@@ -15,16 +15,16 @@ app.use(cors({
 
 app.use('/notes', notesRoutes);
 
-// Mulai dengarkan port SEBELUM sequelize sync
+// Jalankan server
 app.listen(PORT, () => {
-  console.log(`Server berjalan di port ${PORT}`);
+  console.log(`✅ Server berjalan di port ${PORT}`);
 });
 
-// Tetap sync DB tapi tidak menghambat startup
+// Sinkronisasi database
 sequelize.sync()
   .then(() => {
-    console.log('Database & tabel berhasil disinkronisasi');
+    console.log('✅ Database & tabel berhasil disinkronisasi');
   })
   .catch(err => {
-    console.error('Gagal sinkronisasi database:', err);
+    console.error('❌ Gagal sinkronisasi database:', err);
   });
