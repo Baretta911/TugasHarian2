@@ -3,6 +3,7 @@ import NoteList from "./components/NoteList";
 import AddNote from "./components/AddNote";
 import axios from "axios";
 import "./styles.css";
+import { BASE_URL } from "./utils"; // ✅ Tambahan penting
 
 const API_URL = `${BASE_URL}/notes`;
 
@@ -26,7 +27,7 @@ function App() {
     const addNote = async (title, content) => {
         try {
             const response = await axios.post(API_URL, { title, content });
-            setNotes([...notes, response.data]); // Menambahkan catatan baru dari backend
+            setNotes([...notes, response.data]);
         } catch (error) {
             console.error("Gagal menambah catatan:", error);
         }
@@ -35,7 +36,7 @@ function App() {
     const editNote = async (id, newTitle, newContent) => {
         try {
             await axios.put(`${API_URL}/${id}`, { title: newTitle, content: newContent });
-            fetchNotes(); // Perbarui data setelah mengedit
+            fetchNotes();
         } catch (error) {
             console.error("Gagal mengedit catatan:", error);
         }
@@ -44,7 +45,7 @@ function App() {
     const deleteNote = async (id) => {
         try {
             await axios.delete(`${API_URL}/${id}`);
-            fetchNotes(); // Perbarui data setelah menghapus
+            fetchNotes();
         } catch (error) {
             console.error("Gagal menghapus catatan:", error);
         }
