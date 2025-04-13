@@ -1,5 +1,5 @@
 runtime: nodejs20
-service: frontend-baretta
+service: default
 instance_class: F1
 
 handlers:
